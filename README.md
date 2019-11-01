@@ -67,7 +67,27 @@ Identify if there are 3 integers in the following array that sum to 10. If so, p
 ```swift
 var tripleSumArr = [-20,-14, -8,-5,-3,-2,1,2,3,4,9,15,20,30]
 ```
+```
+var emptyMatrix = [[Int]]()
+for num1 in tripleSumArr {
+    for num2 in tripleSumArr {
+        for num3 in tripleSumArr {
+            if num1 + num2 + num3 == 10 {
+                var emptyArr = [Int]()
+                emptyArr.append(num1)
+                emptyArr.append(num2)
+                emptyArr.append(num3)
+                emptyMatrix.append(emptyArr)
+            }
+             
+        }
+        
+    }
+    
+}
+print(emptyMatrix)
 
+```
 
 ## Question 3
 
@@ -222,6 +242,24 @@ House Lannister - A Lannister always pays his debts
 
 b. Move that function to inside the enum as a method
 
+```
+enum GameOfThronesHouse: String {
+case stark, lannister, targaryen, baratheon
+
+func houseSaying(house: GameOfThronesHouse ) {
+    switch house {
+    case .baratheon:
+        print("Ours is the Fury")
+    case .stark:
+        print("Winter is coming")
+    case .targaryen:
+        print("Fire and Blood")
+    case .lannister:
+        print("A Lannister always pays his debts")
+    }
+}
+}
+```
 ## Question 9
 
 What are the contents of `library1` and `library2`? Explain why.
@@ -245,6 +283,16 @@ library1.add(track: "Voodoo Child")
 let library2 = library
 library2.add(track: "Come As You Are")
 ```
+```
+The contents of both should be all three songs classes are reference type which means they inherit from each other.
+
+
+
+```
+
+
+
+
 
 ## Question 10
 
@@ -254,4 +302,23 @@ Make a function that takes in an array of strings and returns an array of string
 Input: ["Hello", "Alaska", "Dad", "Peace", "Power"]
 
 Output: ["Alaska", "Dad", "Power"]
+```
+```
+
+func keyboardRow(strings: [String]) -> [String] {
+    var emptyArr = [String]()
+    let row1: Set<Character> = ["q","w","e","r","t","y","u","i","o","p"]
+    let row2: Set<Character> = ["a","s","d","f","g","h","j","k","l"]
+    let row3: Set<Character> = ["z","x","c","v","b","n","m"]
+    for words in strings {
+        if Set(words.lowercased()).isSubset(of: row1) || Set(words.lowercased()).isSubset(of: row2) || Set(words.lowercased()).isSubset(of: row3) {
+            emptyArr.append(words)
+        }
+    
+}
+    return emptyArr
+}
+
+print(keyboardRow(strings: ["hello", "Alaska", "Dad", "Peace", "Power"]))
+
 ```
